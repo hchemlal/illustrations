@@ -1,0 +1,8 @@
+flowchart TD
+    subgraph "3-Node Cluster (System of Record)"
+        N1[Node 1] <-->|Consensus<br />Protocol| N2[Node 2]
+        N2 <-->|Consensus<br />Protocol| N3[Node 3]
+        N3 <-->|Consensus<br />Protocol| N1
+    end
+
+    N1 -- "Emits State Change Events" --> EventStream[Event Stream]
