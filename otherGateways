@@ -1,0 +1,11 @@
+flowchart LR
+    
+
+    subgraph "Arcadia Other Gateways"
+        GW1[Integration GW]
+        GW2[Awards Logic GW]
+        GW3[opics-imperative GW]
+        GW4[downstream GW]
+        GW5[kafka GW]
+        GW6[event-hub GW]
+    end
