@@ -1,0 +1,25 @@
+flowchart LR
+    subgraph "Client Layer"
+        UI[Web UI]
+    end
+
+    subgraph "API Layer: Gateways"
+        GW1[Gateway]
+        GW2[Gateway]
+        GW3[Gateway]
+    end
+
+    subgraph "Processing Layer: 3-Node Cluster"
+        N1[Node 1] <--> N2[Node 2]
+        N2 <--> N3[Node 3]
+        N3 <--> N1
+    end
+
+    UI -- "1. All Requests<br />(Commands & Queries)" --> GW1
+
+    GW1 -- "2. Forward Transaction<br />Commands (Writes)" --> N1
+
+    N1 -- "3a. Prime Data<br />(on startup)" --> GW1
+    N1 -- "3b. Live Data Updates<br />(via events)" --> GW1
+
+    GW1 -- "4. Return Query Results" --> UI
